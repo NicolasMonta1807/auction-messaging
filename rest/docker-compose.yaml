@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  bid-capture-service:
+    image: bid-capture-service
+    ports:
+      - "5000:5000"
+    networks:
+      - auction-network
+
+  bid-tracking-service:
+    image: bid-tracking-service
+    ports:
+      - "5001:5001"
+    networks:
+      - auction-network
+
+  bid-analytics-service:
+    image: bid-analytics-service
+    ports:
+      - "5002:5002"
+    networks:
+      - auction-network
+
+  bid-producer-service:
+    image: bid-producer-service
+    ports:
+      - "8080:8080"
+    networks:
+      - auction-network
+
+networks:
+  auction-network:
