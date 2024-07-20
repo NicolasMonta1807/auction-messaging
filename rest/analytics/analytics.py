@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -6,8 +6,15 @@ app = Flask(__name__)
 def analyse_bid():
   bid_data = request.json
   
+  #TODO: Log data
   print(f"Analysed bid: {bid_data}")
-  return "Bid Analysed", 200
+  
+  response = {
+    "success": True,
+    "response": "Bid analysed"
+  }
+  
+  return jsonify(response), 200
 
 if __name__ == '__main__':
   app.run(port=5002)

@@ -27,12 +27,12 @@ def produce_bid():
   analytics_response = requests.post(service_urls["analytics"], json=bid_data)
   
   return jsonify({
-    "capture": capture_response,
-    "tracking": tracking_response,
-    "analytics": analytics_response
+    "capture": capture_response.text,
+    "tracking": tracking_response.text,
+    "analytics": analytics_response.text
   }), 200
   
   
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=PORT)
+  app.run( port=PORT)
   
