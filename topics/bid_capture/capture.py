@@ -3,7 +3,7 @@ import json
 
 context = zmq.Context()
 socket = context.socket(zmq.SUB)
-socket.connect("tcp://producer:5555")
+socket.connect("tcp://localhost:5555")
 socket.setsockopt_string(zmq.SUBSCRIBE, '')
 
 while True:
