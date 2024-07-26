@@ -1,0 +1,22 @@
+services:
+  topics-producer:
+    build: ./bid_producer
+    container_name: topics-producer
+
+  topics-capture:
+    build: ./bid_capture
+    container_name: topics-capture
+    depends_on:
+      - topics-producer
+
+  topics-tracking:
+    build: ./bid_tracking
+    container_name: topics-tracking
+    depends_on:
+      - topics-producer
+
+  topics-analytics:
+    build: ./bid_analytics
+    container_name: topics-analytics
+    depends_on:
+      - topics-producer

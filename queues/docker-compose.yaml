@@ -1,0 +1,22 @@
+services:
+  queues-producer:
+    build: ./bid_producer
+    container_name: queues-producer
+
+  queues-capture:
+    build: ./bid_capture
+    container_name: queues-capture
+    depends_on:
+      - queues-producer
+
+  queues-tracking:
+    build: ./bid_tracking
+    container_name: queues-tracking
+    depends_on:
+      - queues-producer
+
+  queues-analytics:
+    build: ./bid_analytics
+    container_name: queues-analytics
+    depends_on:
+      - queues-producer
